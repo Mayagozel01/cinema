@@ -12,7 +12,7 @@ class CinemaController extends Controller
         // Get all cinemas with their related data
         $cinemas = Cinema::with(['genres', 'showtimes.hall'])->get();
         
-        return response()->json($cinemas);
+         return view('index', compact('cinemas'));
     }
     
     public function show($id)
