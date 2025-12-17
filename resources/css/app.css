@@ -2,19 +2,56 @@
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@source '../views/**/*.blade.php';
+@source '../js/**/*.js';
 
 @theme {
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
-/* Body styles */
 body {
-    background-color: #447787;
-    font-family: var(--font-sans);
-    margin: 0;
-    padding: 0;
-    background: url();
+  margin: 0;
+  padding: 0;
+  background-color: #000;
 }
+
+.page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  background-image: url('/images/background-poster.png'); 
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.page-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1240px;
+  min-height: 100%;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  z-index: 2;
+  background-color: #fff;  
+}
+
+@media (max-width: 1240px) {
+  .page-wrapper::before {
+    width: 100%;
+  }
+  
+  .content {
+    max-width: 100%;
+  }
+}
+
