@@ -3,24 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cinema;
 
 class CinemaController extends Controller
 {
     public function index()
     {
-        // Get all cinemas with their related data
-        $cinemas = Cinema::with(['genres', 'showtimes.hall'])->get();
-        
-         return view('index', compact('cinemas'));
+        return view('index');
     }
-    
+
+    public function movies()
+    {
+        return view('movies');
+    }
+
+    public function showtimes()
+    {
+        return view('showtimes');
+    }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
     public function show($id)
     {
-        // Get a specific cinema with all related data
-        $cinema = Cinema::with(['genres', 'showtimes.hall'])
-                    ->findOrFail($id);
-        
-        return response()->json($cinema);
+        // For now, we'll just return the index view
+        // In a real application, you would fetch the cinema by ID
+        return view('index');
     }
 }
