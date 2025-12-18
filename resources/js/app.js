@@ -1,4 +1,5 @@
 import './bootstrap';
+import './mobile-menu';
 
 // Add click event to all custom buttons
 document.addEventListener('DOMContentLoaded', function() {

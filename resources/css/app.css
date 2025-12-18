@@ -5,8 +5,16 @@
 @source '../views/**/*.blade.php';
 @source '../js/**/*.js';
 
+@font-face {
+    font-family: 'Roboto';
+    src: url('./fonts/Roboto-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Roboto', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
@@ -55,3 +63,217 @@ body {
   }
 }
 
+.cinema_reg{
+font-family: 'Roboto', sans-serif;
+font-weight: 400;
+font-size: 16px;
+}
+.cinema_reg-sm{
+font-family: 'Roboto', sans-serif;
+font-weight: 400;
+font-size: 13px;
+}
+.arrow-down{
+  width: 15px;
+height: 10px;
+}
+.social-icon{
+width:  30px;
+height: 30px;
+border-radius: 24px;
+
+}
+.red-button{
+border-radius: 16px;
+padding: 8px 16px;
+color: #fff;
+font-family: 'Roboto', sans-serif;
+font-weight: 500;
+font-size: 14px;
+background-color: #E92B43;
+display: inline-block;
+}
+.nav-link {
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -5px;
+    width: 120%;
+    height: 3px;
+    background-color: #E92B43;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    opacity: 1;
+}
+   @font-face {
+            font-family: 'Roboto';
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .cinema_regular {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .cinema_reg {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        .cinema_reg-sm {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 13px;
+        }
+        .cinema_reg-xs{
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        color: #727276;
+        }
+                .cinema_reg-15{
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 15px;
+        }
+
+        .arrow-down {
+            width: 15px;
+            height: 10px;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 24px;
+        }
+
+        .red-button {
+            border-radius: 16px;
+            padding: 8px 16px;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            background-color: #E92B43;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .red-button:hover {
+            background-color: #d32f3e;
+        }
+
+        .nav-link {
+            position: relative;
+            padding-bottom: 8px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -5px;
+            width: 120%;
+            height: 3px;
+            background-color: #E92B43;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            opacity: 1;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #123D4B;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+            background: transparent;
+            border: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-link {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px 0;
+            display: block;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-link:hover {
+            color: #E92B43;
+        }
+
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cinema_regular {
+                font-size: 14px;
+            }
+        }
