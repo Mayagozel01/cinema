@@ -21,7 +21,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #000;
+  background-color: #123D4B;
+     font-family: 'Roboto', sans-serif;
 }
 
 .page-wrapper {
@@ -40,14 +41,15 @@ body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 1240px;
+  width: 100%;
+  max-width: 1400px;
   min-height: 100%;
   z-index: 1;
 }
 
 .content {
   position: relative;
-  max-width: 1240px;
+  max-width: 1400px;
   margin: 0 auto;
   z-index: 2;
   background-color: #fff;  
@@ -62,6 +64,7 @@ body {
     max-width: 100%;
   }
 }
+
 
 .cinema_reg{
 font-family: 'Roboto', sans-serif;
@@ -121,11 +124,7 @@ display: inline-block;
             font-display: swap;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-        }
+
 
         .cinema_regular {
             font-family: 'Roboto', sans-serif;
@@ -150,7 +149,7 @@ display: inline-block;
         font-size: 12px;
         color: #727276;
         }
-                .cinema_reg-15{
+        .cinema_reg-15{
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
         font-size: 15px;
