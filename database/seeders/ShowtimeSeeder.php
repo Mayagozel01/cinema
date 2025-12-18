@@ -15,33 +15,133 @@ class ShowtimeSeeder extends Seeder
      */
     public function run(): void
     {
-        $cinema1 = Cinema::first();
-        $cinema2 = Cinema::skip(1)->first();
+        $cinemas = Cinema::all();
+        $halls = Hall::all();
         
-        $hall1 = Hall::first();
-        $hall2 = Hall::skip(1)->first();
-        
-        if ($cinema1 && $cinema2 && $hall1 && $hall2) {
-            Showtime::create([
-                'cinema_id' => $cinema1->id,
-                'hall_id' => $hall1->id,
-                'show_time' => '14:00:00',
-                'price' => 15.99
-            ]);
+        if ($cinemas->count() > 0 && $halls->count() > 0) {
+            $mainHall = $halls->where('name', 'Зал 3')->first() ?? $halls->first();
             
-            Showtime::create([
-                'cinema_id' => $cinema1->id,
-                'hall_id' => $hall2->id,
-                'show_time' => '17:30:00',
-                'price' => 18.99
-            ]);
+            $movie1 = $cinemas->where('name', 'Праздники')->first();
+            if ($movie1) {
+                Showtime::create([
+                    'cinema_id' => $movie1->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '15:35:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie1->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '17:40:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie1->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '19:15:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie1->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '21:05:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie1->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '21:40:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie1->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '22:45:00',
+                    'price' => 1233.00
+                ]);
+            }
             
-            Showtime::create([
-                'cinema_id' => $cinema2->id,
-                'hall_id' => $hall1->id,
-                'show_time' => '15:30:00',
-                'price' => 12.99
-            ]);
+            // Movie 2: Мег 2: Бездна
+            $movie2 = $cinemas->where('name', 'Мег 2: Бездна')->first();
+            if ($movie2) {
+                Showtime::create([
+                    'cinema_id' => $movie2->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '15:35:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie2->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '17:40:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie2->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '19:15:00',
+                    'price' => 1233.00
+                ]);
+            }
+            
+            // Movie 3: Заложники
+            $movie3 = $cinemas->where('name', 'Заложники')->first();
+            if ($movie3) {
+                Showtime::create([
+                    'cinema_id' => $movie3->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '16:10:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie3->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '21:30:00',
+                    'price' => 1233.00
+                ]);
+            }
+            
+            $movie4 = $cinemas->where('name', 'Леди Баг и Супер-Кот: Пробуждение силы')->first();
+            if ($movie4) {
+                Showtime::create([
+                    'cinema_id' => $movie4->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '16:10:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie4->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '21:30:00',
+                    'price' => 1233.00
+                ]);
+            }
+            
+            $movie6 = $cinemas->where('name', 'Руслан и Людмила')->first();
+            if ($movie6) {
+                Showtime::create([
+                    'cinema_id' => $movie6->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '14:00:00',
+                    'price' => 1233.00
+                ]);
+                
+                Showtime::create([
+                    'cinema_id' => $movie6->id,
+                    'hall_id' => $mainHall->id,
+                    'show_time' => '18:30:00',
+                    'price' => 1233.00
+                ]);
+            }
         }
     }
 }

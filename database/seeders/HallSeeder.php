@@ -14,18 +14,28 @@ class HallSeeder extends Seeder
     public function run(): void
     {
         Hall::create([
-            'name' => 'Hall 1',
+            'name' => 'Зал 1',
+            'capacity' => 120
+        ]);
+        
+        Hall::create([
+            'name' => 'Зал 2',
+            'capacity' => 80
+        ]);
+        
+        Hall::create([
+            'name' => 'Зал 3',
             'capacity' => 150
         ]);
         
         Hall::create([
-            'name' => 'Hall 2',
-            'capacity' => 200
+            'name' => 'VIP Зал',
+            'capacity' => 50
         ]);
         
         Hall::create([
-            'name' => 'IMAX Hall',
-            'capacity' => 300
+            'name' => 'IMAX Зал',
+            'capacity' => 250
         ]);
     }
 }

@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             HallSeeder::class,
             GenreSeeder::class,
             CinemaSeeder::class,
+            CinemaGenreSeeder::class,
             ShowtimeSeeder::class,
+            UserSeeder::class,
         ]);
         
         // User::factory(10)->create();

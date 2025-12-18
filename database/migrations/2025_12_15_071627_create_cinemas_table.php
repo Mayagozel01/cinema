@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('poster')->nullable();
-            $table->string('age_rating'); // 16+, 14+, etc
+            $table->string('age_rating'); 
             $table->boolean('is_premier')->default(false);
             $table->timestamps();
         });

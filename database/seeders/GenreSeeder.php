@@ -13,10 +13,12 @@ class GenreSeeder extends Seeder
      */
     public function run(): void
     {
-        Genre::create(['name' => 'Action']);
-        Genre::create(['name' => 'Adventure']);
-        Genre::create(['name' => 'Comedy']);
-        Genre::create(['name' => 'Animation']);
-        Genre::create(['name' => 'Sci-Fi']);
+        Genre::create(['name' => 'комедия']);
+        Genre::create(['name' => 'экшен']);
+        Genre::create(['name' => 'триллер']);
+        Genre::create(['name' => 'фэнтези']);
+        Genre::create(['name' => 'боевик']);
+        Genre::create(['name' => 'мелодрама']);
+        Genre::create(['name' => 'приключения']);
     }
 }
