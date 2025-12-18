@@ -21,84 +21,49 @@
     <!-- Movies Grid -->
     <div class="max-w-7xl mx-auto px-4 py-8">
         <div class="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6">
-            <!-- Movie Card 1 -->
+            @foreach ($cinemas as $cinema)
             <div class="bg-white overflow-hidden">
                 <div class="relative">
-                    <img src="{{ asset('images/movie1.png') }}" alt="Праздники" class="w-full h-80 object-cover">
-                    <span class="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 text-xs font-bold">ПРЕМЬЕРА</span>
-                    <span class="absolute bottom-3 left-3 bg-[#123D4B] text-black px-2 py-1 text-xs font-bold text-white">12+</span>
+                    @if($cinema->poster)
+                        <img src="{{ asset('images/' . $cinema->poster) }}" alt="{{ $cinema->name }}" class="w-full h-80 object-cover">
+                    @else
+                        <div class="w-full h-80 bg-gray-800 flex items-center justify-center">
+                            <svg class="w-20 h-20 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                    @endif
+                    @if($cinema->is_premier)
+                        <span class="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 text-xs font-bold">ПРЕМЬЕРА</span>
+                    @endif
+                    <span class="absolute bottom-3 left-3 bg-[#123D4B] text-black px-2 py-1 text-xs font-bold text-white">{{ $cinema->age_rating }}</span>
                 </div>
                 <div class="p-4">
-                    <h3 class="text-[24px] font-bold mb-2">Праздники</h3>
+                    <h3 class="text-[24px] font-bold mb-2">{{ $cinema->name }}</h3>
                     <ul class="flex gap-4">
-                        <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">комедия</li>
+                        @foreach($cinema->genres as $genre)
+                            <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">{{ $genre->name }}</li>
+                        @endforeach
                     </ul>
                     <div class="grid grid-cols-3 gap-2">
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">15:35</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
+                        @foreach($cinema->showtimes as $showtime)
+                            <div class="flex flex-col justify-center items-center">
+                                <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
+                                    <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">{{ substr($showtime->show_time, 0, 5) }}</div>
+                                    <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
+                                        <p>2D</p>
+                                        <p>{{ number_format($showtime->price, 0, '', ' ') }} ₸</p>
+                                    </div>
                                 </div>
+                                <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">{{ $showtime->hall->name }}</p>
                             </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">17:40</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">19:15</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">21:05</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">21:40</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">22:45</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
+            @endforeach
 
-            <!-- Movie Card 2 -->
+            <!-- Movie Card static example
             <div class="bg-white overflow-hidden">
                 <div class="relative">
                     <img src="{{ asset('images/movie2.png') }}" alt="Мег 2: Бездна" class="w-full h-80 object-cover">
@@ -144,84 +109,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Movie Card 3 -->
-            <div class="bg-white overflow-hidden">
-                <div class="relative">
-                    <img src="{{ asset('images/movie3.png') }}" alt="Заложники" class="w-full h-80 object-cover">
-                    <span class="absolute bottom-3 left-3 bg-[#123D4B] text-black px-2 py-1 text-xs font-bold text-white rounded">16+</span>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-[24px] font-bold mb-2">Заложники</h3>
-                    <ul class="flex gap-4">
-                        <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">экшен</li>
-                        <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">триллер</li>
-                    </ul>
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">16:10</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">21:30</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Movie Card 4 -->
-            <div class="bg-white overflow-hidden border-4 border-blue-500">
-                <div class="relative">
-                    <img src="{{ asset('images/movie4.png') }}" alt="Леди Баг и Супер-Кот" class="w-full h-80 object-cover">
-                    <span class="absolute bottom-3 left-3 bg-[#123D4B] text-black px-2 py-1 text-xs font-bold text-white rounded">6+</span>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-[24px] font-bold mb-2">Леди Баг и Супер-Кот: Пробуждение силы</h3>
-                    <ul class="flex gap-4">
-                        <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">фэнтези</li>
-                        <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">боевик</li>
-                        <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">мелодрама</li>
-                    </ul>
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">16:10</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">21:30</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Movie Card 5 -->
+            </div> -->
             <div class="bg-white overflow-hidden">
                 <div class="relative">
                     <div class="w-full h-80 bg-gray-800 flex items-center justify-center">
@@ -236,43 +124,6 @@
                     <ul class="flex">
                         <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">Информация скоро появится</li>
                     </ul>
-                </div>
-            </div>
-
-            <!-- Movie Card 6 -->
-            <div class="bg-white overflow-hidden">
-                <div class="relative">
-                    <img src="{{ asset('images/movie5.png') }}" alt="Руслан и Людмила" class="w-full h-80 object-cover">
-                    <span class="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 text-xs font-bold">ПРЕМЬЕРА</span>
-                </div>
-                <div class="p-4">
-                    <h3 class="text-[24px] font-bold mb-2">Руслан и Людмила</h3>
-                    <ul class="flex gap-4">
-                        <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">фэнтези, приключения</li>
-                        <li class="cinema_reg-xs mb-4 bg-[#F2F2F5] rounded-[3px] px-[4px] py-[3px]">приключения</li>
-                    </ul>
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">14:00</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                        <div class="flex flex-col justify-center items-center">
-                            <div class="flex flex-col justify-center items-center w-full border border-[#E92B43] rounded gap-2">
-                                <div class="bg-[#E92B43] text-white cinema_reg-15 w-full text-center">18:30</div>
-                                <div class="px-2 text-[#4C4C4F] text-[11px] font-['Roboto'] w-full flex justify-between">
-                                    <p>2D</p>
-                                    <p>1233 ₸</p>
-                                </div>
-                            </div>
-                            <p class="text-[10px] text-[#4C4C4F] font-['Roboto'] font-[400]">Зал 3</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
